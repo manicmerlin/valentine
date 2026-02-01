@@ -255,6 +255,23 @@
       return Math.max(min, Math.min(max, n));
     }
 
+    function moveNoRandomly() {
+      const z = zone.getBoundingClientRect();
+      const b = noBtn.getBoundingClientRect();
+
+      let newLeft = Math.random() * (z.width - b.width);
+      let newTop = Math.random() * (z.height - b.height);
+
+      noBtn.style.left = newLeft + "px";
+      noBtn.style.top = newTop + "px";
+      noBtn.style.transform = "none";
+
+      growYes();
+    }
+
+    // Move "No" button randomly every 1.5 seconds
+    setInterval(moveNoRandomly, 1500);
+
     function moveNo(px, py) {
       const z = zone.getBoundingClientRect();
       const b = noBtn.getBoundingClientRect();
